@@ -44,14 +44,11 @@ export const Box = styled.div`
   top: 17%;
   left: 50%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  background: ${({ accepted, rejected }) =>
-    accepted ? 'paleturquoise' : rejected ? 'palevioletred' : 'orange'};
+  background: ${props => props.colour}
   cursor: pointer;
 
   transform-origin: 50% 50%;
   transition: all 0.5s;
-
-  }
 `;
 
 export default Box;

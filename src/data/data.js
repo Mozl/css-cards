@@ -1,20 +1,24 @@
 const data = {
   cards: [
     {
-      index: 0,
-      name: 'first'
+      id: 0,
+      name: 'first',
+      colour: '#EC7E7E'
     },
     {
-      index: 1,
-      name: 'second'
+      id: 1,
+      name: 'second',
+      colour: '#6FF68A'
     },
     {
-      index: 2,
-      name: 'third'
+      id: 2,
+      name: 'third',
+      colour: '#7CBAF7'
     },
     {
-      index: 3,
-      name: 'fourth'
+      id: 3,
+      name: 'fourth',
+      colour: '#FE9749'
     }
   ]
 };

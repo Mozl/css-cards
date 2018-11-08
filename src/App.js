@@ -11,7 +11,6 @@ class App extends Component {
     super(props);
     this.state = {
       allCards: data.cards,
-      card: data.cards[0],
       accepted: false,
       rejected: false
     };
@@ -29,42 +28,72 @@ class App extends Component {
   }
 
   nextCard = () => {
-    let swappedCards = data.cards;
-    swappedCards.push(swappedCards.shift());
+    let originalCards = data.cards;
+    originalCards.push(originalCards.shift());
+    console.log('changed cards', originalCards);
 
     this.setState({
       accepted: true,
-      allCards: swappedCards
+      allCards: originalCards
     });
   };
 
   prevCard = () => {
-    let swappedCards = data.cards;
-    swappedCards.push(swappedCards.shift());
+    let originalCards = data.cards;
+    originalCards.splice(0, 0, originalCards.pop());
+    // let swappedCards = data.cards;
+    // swappedCards.push(swappedCards.shift());
+    // let firstCard = swappedCards.indexOf(0);
+    // swappedCards[0].index = firstCard;
 
     this.setState({
       rejected: true,
-      card: swappedCards
+      allCards: originalCards
     });
   };
 
   render() {
     const { accepted, rejected, allCards } = this.state;
-    console.log('allCards', allCards);
+    console.log('data.cards originally', data.cards);
+    const orgCardArray = data.cards;
+
     return (
       <div>
         <Cube className="cube pers250">
-          {allCards.map(i => (
+          <Box
+            className={accepted ? `first` : `${data.cards[0].name}`}
+            accepted={accepted}
+            rejected={rejected}
+            colour={data.cards[0].colour}
+          />
+          <Box
+            className={accepted ? `second` : `${data.cards[1].name}`}
+            accepted={accepted}
+            rejected={rejected}
+            colour={data.cards[1].colour}
+          />
+          <Box
+            className={accepted ? `third` : `${data.cards[2].name}`}
+            accepted={accepted}
+            rejected={rejected}
+            colour={data.cards[2].colour}
+          />
+          <Box
+            className={accepted ? `fourth` : `${data.cards[3].name}`}
+            accepted={accepted}
+            rejected={rejected}
+            colour={data.cards[3].colour}
+          />
+          {/* {allCards.map((card, index) => (
             <Box
-              key={i.index}
-              className={i.name}
+              key={card.id}
+              className={accepted ? `${orgCardArray[0].name}` : `${card.name}`}
+              index={index}
               accepted={accepted}
               rejected={rejected}
-            >
-              {allCards.indexOf(i)} box
-            </Box>
-          ))}
-
+              colour={card.colour}
+            /> 
+          ))}*/}
           <div className="action">
             <Button className="reject" onClick={() => this.prevCard()}>
               <span aria-label="reject" role="img">
@@ -72,7 +101,7 @@ class App extends Component {
               </span>
             </Button>
             <Button className="accept" onClick={() => this.nextCard()}>
-              <span aria-label="reject" role="img">
+              <span aria-label="accept" role="img">
                 ✔️
               </span>
             </Button>

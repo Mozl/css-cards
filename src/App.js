@@ -1,99 +1,73 @@
 import React, { Component } from 'react';
-import './App.css';
 import Box from './Box';
 import Cube from './Cube';
 import Button from './Button';
-import data from './data/data';
-import { slideRight, slideLeft } from './Box';
+import cards from './data/data';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allCards: data.cards,
+      allCards: cards,
       accepted: false,
       rejected: false
     };
   }
 
-  componentDidUpdate() {
-    if (this.props.accepted) {
-      const targetNodeToSlide = document.querySelector('.Box .first');
-      targetNodeToSlide.style = `animation: ${slideRight} 5s linear`;
-    }
-    if (this.props.rejected) {
-      const targetNodeToSlide = document.querySelector('.Box .first');
-      targetNodeToSlide.style = `animation: ${slideLeft} 5s linear`;
-    }
-  }
-
   nextCard = () => {
-    let originalCards = data.cards;
-    originalCards.push(originalCards.shift());
-    console.log('changed cards', originalCards);
+    const allCards = this.state.allCards.map((card, index) => {
+      if (index === 3) {
+        return Object.assign({}, card, {
+          colour: this.state.allCards[0].colour,
+          id: this.state.allCards[0].id
+        });
+      }
+      return Object.assign({}, card, {
+        colour: this.state.allCards[index + 1].colour,
+        id: this.state.allCards[index + 1].id
+      });
+    });
 
     this.setState({
-      accepted: true,
-      allCards: originalCards
+      allCards,
+      accepted: true
     });
   };
 
   prevCard = () => {
-    let originalCards = data.cards;
-    originalCards.splice(0, 0, originalCards.pop());
-    // let swappedCards = data.cards;
-    // swappedCards.push(swappedCards.shift());
-    // let firstCard = swappedCards.indexOf(0);
-    // swappedCards[0].index = firstCard;
+    const allCards = this.state.allCards.map((card, index) => {
+      if (index === 0) {
+        return Object.assign({}, card, {
+          colour: this.state.allCards[3].colour,
+          id: this.state.allCards[3].id
+        });
+      }
+      return Object.assign({}, card, {
+        colour: this.state.allCards[index - 1].colour,
+        id: this.state.allCards[index - 1].id
+      });
+    });
 
     this.setState({
-      rejected: true,
-      allCards: originalCards
+      allCards,
+      rejected: true
     });
   };
 
   render() {
     const { accepted, rejected, allCards } = this.state;
-    console.log('data.cards originally', data.cards);
-    const orgCardArray = data.cards;
-
     return (
       <div>
-        <Cube className="cube pers250">
-          <Box
-            className={accepted ? `first` : `${data.cards[0].name}`}
-            accepted={accepted}
-            rejected={rejected}
-            colour={data.cards[0].colour}
-          />
-          <Box
-            className={accepted ? `second` : `${data.cards[1].name}`}
-            accepted={accepted}
-            rejected={rejected}
-            colour={data.cards[1].colour}
-          />
-          <Box
-            className={accepted ? `third` : `${data.cards[2].name}`}
-            accepted={accepted}
-            rejected={rejected}
-            colour={data.cards[2].colour}
-          />
-          <Box
-            className={accepted ? `fourth` : `${data.cards[3].name}`}
-            accepted={accepted}
-            rejected={rejected}
-            colour={data.cards[3].colour}
-          />
-          {/* {allCards.map((card, index) => (
+        <Cube className="cube">
+          {allCards.map(card => (
             <Box
               key={card.id}
-              className={accepted ? `${orgCardArray[0].name}` : `${card.name}`}
-              index={index}
+              className={card.name}
               accepted={accepted}
               rejected={rejected}
               colour={card.colour}
-            /> 
-          ))}*/}
+            />
+          ))}
           <div className="action">
             <Button className="reject" onClick={() => this.prevCard()}>
               <span aria-label="reject" role="img">

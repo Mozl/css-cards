@@ -1,44 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# css-cards
 
-## Available Scripts
+A React SPA project for showing a stack of cards. The user can accept or reject the cards to animate the stack and change the order the cards appear in.
 
-In the project directory, you can run:
+## Example view
 
-### `npm start`
+![Desktop](./src/img/desktop.png)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Git clone the repo to download the project files.
 
-### `npm test`
+- In the terminal run: `npm install` to install all the dependencies for the project.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Run `npm start` to get the app started.
 
-### `npm run build`
+- Head to http://localhost:3000/ in the browser to see it.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My approach
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+I started out by setting up a simple create-react-app project as I wanted to jump into development quickly. As this animation style project was new to me I wanted to see whether there were any examples of it on the web. There were a few but they were all using jQuery and animation libraries which I wasn't familiar with. And so I decided to build the animated card stack from scratch in React with styled-components. I chose styled-components because of its flexibility with React and its general ease of use, alongside the styling being inside each component for added componentisation. I began by attempting to animate a single card via a hover, which was successful, meaning the card slid away to the side on hovering over it. Then I began building my other cards with translate3d, moving them into place. The initial set up of getting the onClick handlers to fire for each button I created was relatively easy, as the app has a simple state and prop system. However a larger amount of time was spent on the card transition logic. This seemingly straightforward project was surprisingly complex, but I enjoyed working through the logic to get it working correctly
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Due to time constraints
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If I had more time to work on this project I would like to get the slide animation working in styled-components. I tried so many different variations of it but frustratingly none of them thus far have worked. I would also like to sit a premade version of the card stack next to mine to see the difference between them. You can find that [here](https://tympanus.net/Development/CardStackEffects/) (see the Krisna version). On top of these tasks I would like to build test suites to make sure I have good code coverage and have ironed out bugs that may crop up.

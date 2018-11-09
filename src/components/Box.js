@@ -33,10 +33,6 @@ const fallLeft = () => css`
 `;
 
 const Box = styled.div`
-  /* animation: ${({ accepted, rejected }) =>
-    accepted ? `${fallRight}` : rejected ? `${fallLeft}` : null}; */
-  /* animation: ${props =>
-    props.accepted ? `${fallLeft} 5s linear` : `${fallRight} 5s linear`}; */
   display: block;
   position: absolute;
   width: 180px;

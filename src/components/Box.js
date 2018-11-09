@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const slideRight = () => keyframes`
   from {
@@ -14,7 +14,7 @@ export const slideRight = () => keyframes`
 
 export const slideLeft = () => keyframes`
   from {
-    transform: translate3d(-20px,57px,20px);
+    transform: translate3d(-87px, -12px, 20px);
     opacity: 1;
   }
 
@@ -24,14 +24,19 @@ export const slideLeft = () => keyframes`
   }
 `;
 
-const Box = styled.div`
-  animation: ${({ accepted, rejected }) =>
-    accepted
-      ? `${slideRight} 5s linear`
-      : rejected
-        ? `${slideLeft} 5s linear`
-        : null};
+const fallRight = () => css`
+  transform: rotate(45deg) translate3d(20%, -70%, 40px) !important;
+`;
 
+const fallLeft = () => css`
+  transform: translate3d(-170%, -50%, 40px) rotate(-45deg) !important;
+`;
+
+const Box = styled.div`
+  /* animation: ${({ accepted, rejected }) =>
+    accepted ? `${fallRight}` : rejected ? `${fallLeft}` : null}; */
+  /* animation: ${props =>
+    props.accepted ? `${fallLeft} 5s linear` : `${fallRight} 5s linear`}; */
   display: block;
   position: absolute;
   width: 180px;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Box from './Box';
-import Cube from './Cube';
-import Button from './Button';
+import Box from './components/Box';
+import Cube from './components/Cube';
+import Button from './components/Button';
 import cards from './data/data';
 
 class App extends Component {

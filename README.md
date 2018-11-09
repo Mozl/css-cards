@@ -8,13 +8,15 @@ A React SPA project for showing a stack of cards. The user can accept or reject 
 
 ## Setup
 
-- Git clone the repo to download the project files.
+- In the terminal git clone the repo to download the project files.
 
-- In the terminal run: `npm install` to install all the dependencies for the project.
+- cd into the css-cards folder
+
+- Then run: `npm install` to install all the dependencies for the project.
 
 - Run `npm start` to get the app started.
 
-- Head to http://localhost:3000/ in the browser to see it.
+- Head to http://localhost:3000/ in the browser to view it.
 
 ## My approach
 

@@ -40,7 +40,7 @@ const Box = styled.div`
   top: 17%;
   left: 50%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  background: ${props => props.colour}
+  background: ${props => props.colour};
   cursor: pointer;
   transition: all 0.3s;
 `;

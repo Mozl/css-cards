@@ -24,14 +24,6 @@ export const slideLeft = () => keyframes`
   }
 `;
 
-const fallRight = () => css`
-  transform: rotate(45deg) translate3d(20%, -70%, 40px) !important;
-`;
-
-const fallLeft = () => css`
-  transform: translate3d(-170%, -50%, 40px) rotate(-45deg) !important;
-`;
-
 const Box = styled.div`
   display: block;
   position: absolute;
